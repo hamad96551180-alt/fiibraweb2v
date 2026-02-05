@@ -1,1 +1,662 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turbofi Telecom - Internet de Alta Velocidade</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0066ff;
+            --primary-dark: #0052cc;
+            --secondary: #00d4ff;
+            --dark: #121a2d;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success: #00cc88;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary) !important;
+        }
+        
+        .navbar-brand span {
+            color: var(--secondary);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--dark) 0%, #1a2b5f 100%);
+            color: white;
+            padding: 120px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M0,0 L100,0 L100,100 Z" fill="%230066ff" opacity="0.05"/><path d="M0,0 L0,100 L100,100 Z" fill="%2300d4ff" opacity="0.05"/></svg>');
+            background-size: 100px;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 0.75rem 2rem;
+            font-weight: 500;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 102, 255, 0.2);
+        }
+        
+        .btn-outline-light {
+            border-radius: 50px;
+            padding: 0.75rem 2rem;
+            font-weight: 500;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .icon-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--primary);
+        }
+        
+        .icon-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .icon-box i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-icon i {
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .about-section {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-info i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-right: 10px;
+            width: 24px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-links h5 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        .speed-visual {
+            position: relative;
+            height: 300px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .speed-bar {
+            width: 80px;
+            margin: 0 10px;
+            background: linear-gradient(to top, var(--primary), var(--secondary));
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            animation: pulse 2s infinite alternate;
+        }
+        
+        .speed-bar:nth-child(2) {
+            height: 85%;
+            animation-delay: 0.2s;
+        }
+        
+        .speed-bar:nth-child(3) {
+            height: 95%;
+            animation-delay: 0.4s;
+        }
+        
+        .speed-bar:nth-child(4) {
+            height: 75%;
+            animation-delay: 0.6s;
+        }
+        
+        .speed-bar:nth-child(5) {
+            height: 65%;
+            animation-delay: 0.8s;
+        }
+        
+        @keyframes pulse {
+            0% {
+                opacity: 0.7;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-lightning-charge-fill"></i> Turbo<span>fi</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contato</a>
+                    </li>
+                </ul>
+                <a href="#contact" class="btn btn-primary ms-lg-3">Contrate Agora</a>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">Internet de Alta Velocidade para sua Casa e Empresa</h1>
+                    <p class="hero-subtitle">Conecte-se com a velocidade da luz. A Turbofi oferece a melhor experiência de internet com estabilidade e suporte especializado.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#contact" class="btn btn-primary">Contratar Agora</a>
+                        <a href="#about" class="btn btn-outline-light">Saiba Mais</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="speed-visual mt-5 mt-lg-0">
+                        <div class="speed-bar"></div>
+                        <div class="speed-bar"></div>
+                        <div class="speed-bar"></div>
+                        <div class="speed-bar"></div>
+                        <div class="speed-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços Section -->
+    <section id="services" class="py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title">Nossos Serviços</h2>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="icon-box">
+                        <div class="feature-icon">
+                            <i class="bi bi-speedometer2"></i>
+                        </div>
+                        <h3>Internet Fibra Óptica</h3>
+                        <p>Velocidades de até 1 Gbps com tecnologia de ponta em fibra óptica para residências e empresas.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon-box">
+                        <div class="feature-icon">
+                            <i class="bi bi-wifi"></i>
+                        </div>
+                        <h3>Wi-Fi de Alta Performance</h3>
+                        <p>Roteadores de última geração com cobertura ampliada para todos os ambientes da sua casa ou empresa.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon-box">
+                        <div class="feature-icon">
+                            <i class="bi bi-headset"></i>
+                        </div>
+                        <h3>Suporte 24/7</h3>
+                        <p>Equipe técnica especializada disponível 24 horas por dia, 7 dias por semana para resolver qualquer problema.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <div class="stat-item">
+                        <div class="stat-number">22+</div>
+                        <div class="stat-label">Anos de Experiência</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <div class="stat-item">
+                        <div class="stat-number">10k+</div>
+                        <div class="stat-label">Clientes Satisfeitos</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">99.7%</div>
+                        <div class="stat-label">Disponibilidade da Rede</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Suporte Técnico</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title">Sobre a Turbofi Telecom</h2>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h3 class="mb-4">Conectando Goiânia há mais de 22 anos</h3>
+                    <p class="mb-4">A Turbofi Telecom LTDA, fundada em 12 de maio de 2003, é uma empresa sólida e confiável no setor de telecomunicações em Goiânia e região.</p>
+                    <p class="mb-4">Com CNPJ 05.667.963/0001-67, estamos registrados na atividade principal de Serviços de Comunicação Multimídia (SCM) e mantemos nossa situação cadastral ativa perante a Receita Federal.</p>
+                    <p class="mb-4">Nosso compromisso é oferecer a melhor experiência de internet para nossos clientes, com velocidade, estabilidade e um atendimento personalizado.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            <span>Internet de alta velocidade</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            <span>Fibra óptica 100% dedicada</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            <span>Atendimento local personalizado</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <h4 class="mb-4">Informações da Empresa</h4>
+                        <div class="mb-3 d-flex">
+                            <i class="bi bi-building"></i>
+                            <div>
+                                <strong>Razão Social:</strong> Turbofi Telecom LTDA<br>
+                                <strong>Nome Fantasia:</strong> Turbofi
+                            </div>
+                        </div>
+                        <div class="mb-3 d-flex">
+                            <i class="bi bi-calendar-date"></i>
+                            <div>
+                                <strong>Fundada em:</strong> 12/05/2003<br>
+                                <strong>CNPJ:</strong> 05.667.963/0001-67
+                            </div>
+                        </div>
+                        <div class="mb-3 d-flex">
+                            <i class="bi bi-geo-alt"></i>
+                            <div>
+                                <strong>Endereço:</strong><br>
+                                Avenida Marcio da Silva, 309 - Qd e Lt 20<br>
+                                Residencial Italia, Goiânia - GO<br>
+                                CEP: 74593-380
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Section -->
+    <section id="contact" class="py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title">Entre em Contato</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="contact-info h-100">
+                                <h4 class="mb-4">Informações de Contato</h4>
+                                <div class="mb-3 d-flex">
+                                    <i class="bi bi-telephone"></i>
+                                    <div>
+                                        <strong>Telefone:</strong><br>
+                                        <a href="tel:6232927279">(62) 3292-7279</a>
+                                    </div>
+                                </div>
+                                <div class="mb-3 d-flex">
+                                    <i class="bi bi-envelope"></i>
+                                    <div>
+                                        <strong>E-mail:</strong><br>
+                                        <a href="mailto:contato@turbofi.com.br">contato@turbofi.com.br</a>
+                                    </div>
+                                </div>
+                                <div class="mb-3 d-flex">
+                                    <i class="bi bi-clock"></i>
+                                    <div>
+                                        <strong>Horário de Atendimento:</strong><br>
+                                        Segunda a Sexta: 8h às 18h<br>
+                                        Sábado: 8h às 12h
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <i class="bi bi-geo-alt"></i>
+                                    <div>
+                                        <strong>Para Correspondência:</strong><br>
+                                        Turbofi Telecom LTDA<br>
+                                        Avenida Marcio da Silva 309 Qd e Lt 20<br>
+                                        Residencial Italia, Goiânia - GO<br>
+                                        CEP: 74593-380
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="contact-info h-100">
+                                <h4 class="mb-4">Solicite uma Proposta</h4>
+                                <form id="contactForm">
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Nome Completo</label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="phone" class="form-label">Telefone</label>
+                                        <input type="tel" class="form-control" id="phone" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="address" class="form-label">Endereço</label>
+                                        <input type="text" class="form-control" id="address" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-100">Solicitar Proposta</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h3 class="mb-3"><i class="bi bi-lightning-charge-fill"></i> Turbo<span style="color: var(--secondary);">fi</span></h3>
+                    <p class="mb-4">Provedor de internet de alta velocidade com mais de 22 anos de experiência, conectando Goiânia com tecnologia de ponta e atendimento personalizado.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-whatsapp fs-5"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <div class="footer-links">
+                        <h5>Links Rápidos</h5>
+                        <ul>
+                            <li><a href="#home">Início</a></li>
+                            <li><a href="#about">Sobre</a></li>
+                            <li><a href="#services">Serviços</a></li>
+                            <li><a href="#contact">Contato</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <div class="footer-links">
+                        <h5>Serviços</h5>
+                        <ul>
+                            <li><a href="#">Internet Residencial</a></li>
+                            <li><a href="#">Internet Empresarial</a></li>
+                            <li><a href="#">Wi-Fi de Alta Performance</a></li>
+                            <li><a href="#">Suporte Técnico</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="footer-links">
+                        <h5>Contato</h5>
+                        <ul>
+                            <li><i class="bi bi-telephone me-2"></i> (62) 3292-7279</li>
+                            <li><i class="bi bi-envelope me-2"></i> contato@turbofi.com.br</li>
+                            <li><i class="bi bi-geo-alt me-2"></i> Av. Marcio da Silva, 309</li>
+                            <li>Residencial Italia</li>
+                            <li>Goiânia - GO</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="copyright">
+                        <p>&copy; 2023 Turbofi Telecom LTDA - CNPJ: 05.667.963/0001-67 - Todos os direitos reservados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Obrigado pelo seu interesse! Entraremos em contato em breve com uma proposta personalizada.');
+            this.reset();
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if(window.scrollY > 50) {
+                navbar.classList.add('shadow');
+            } else {
+                navbar.classList.remove('shadow');
+            }
+        });
+    </script>
+</body>
+</html>
